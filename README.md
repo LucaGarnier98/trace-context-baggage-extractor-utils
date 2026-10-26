@@ -32,3 +32,10 @@ Propagation plumbing should not drag in a runtime framework. This library extrac
 - Duplicate baggage keys: the **last** value wins, matching W3C Baggage spec guidance for receivers.
 - `traceparent` with wrong field lengths or non-hex characters is returned as `trace: null` rather than partially parsed.
 - Case-insensitive header lookup: `TraceParent` and `BAGGAGE` resolve the same as lowercase.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+

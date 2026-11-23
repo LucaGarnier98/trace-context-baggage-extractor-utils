@@ -1,6 +1,6 @@
 {
   "name": "trace-context-baggage-extractor-utils",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "main": "src/index.js",
   "exports": "./src/index.js",
